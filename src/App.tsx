@@ -1,19 +1,8 @@
-import { Balance } from "./components/tests/balance";
-// import { ConnectWallet } from "./components/tests/connect-wallet"
-// import { SendTransaction } from "./components/tests/send-transaction";
 import { Header } from "./components/Header";
 import { Steps } from "./components/Steps";
-import "./assets/main.scss";
+import { Table } from "./components/Table";
 
-function Test() {
-  return (
-    <>
-      <Balance />
-      {/* <ConnectWallet/> */}
-      {/* <SendTransaction /> */}
-    </>
-  );
-}
+import "./assets/main.scss";
 
 export const App = () => {
   return (
@@ -23,9 +12,8 @@ export const App = () => {
         What ideas interest you?
         <span className="main-line" />
       </h1>
-      <Steps />
-      {/* <Table /> */}
-      <Test />
+      {/* <Steps /> */}
+      <Table />
     </div>
   );
 };

@@ -1,48 +1,53 @@
 import { useCircle } from "../../providers";
-import { useRef, useState } from "react";
+import { useRef, useState, FormEvent } from "react";
 import { Modal, ModalRef } from "../Modal";
 
-const shortizeAddress = (address: string) => {
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
-};
+const shortizeAddress = (address: string) =>
+  `${address.slice(0, 6)}...${address.slice(-4)}`;
 
 export const ConnectWallet = () => {
   const modalRef = useRef<ModalRef>(null);
-
-  const [userAddress, setUserAddress] = useState<string>("");
+  const [userAddress, setUserAddress] = useState("");
   const { circle } = useCircle();
 
-  const isConnected = userAddress;
-
-  const connectWallet = async () => {
-    if (!isConnected) {
-      await circle.connectWallet();
-      setUserAddress(circle.userAddress!);
+  const connectWallet = async (name: string) => {
+    if (!userAddress) {
+      await circle.connectWallet({ userId: name });
+      setUserAddress(circle.userAddress || "");
+      modalRef.current?.close();
     } else {
       setUserAddress("");
-      modalRef?.current?.open();
     }
   };
 
-  const showModal = () => {
-    modalRef?.current?.open();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const nickname = new FormData(e.currentTarget).get("nickname") as string;
+    connectWallet(nickname);
   };
 
   return (
     <>
-      <button className="btn" onClick={showModal}>
-        {isConnected ? shortizeAddress(userAddress) : "Connect Wallet"}
+      <button className="btn" onClick={() => modalRef.current?.open()}>
+        {userAddress ? shortizeAddress(userAddress) : "Connect Wallet"}
       </button>
       <Modal ref={modalRef}>
-        <label htmlFor="" className="input-label">
-          nickname
-          <input type="text" className="input" />
-        </label>
-        <div className="input-btn">
-          <button className="btn" onClick={connectWallet}>
-            Submit
-          </button>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="nickname" className="input-label">
+            Nickname
+            <input
+              type="text"
+              className="input"
+              id="nickname"
+              name="nickname"
+            />
+          </label>
+          <div className="input-btn">
+            <button type="submit" className="btn">
+              Submit
+            </button>
+          </div>
+        </form>
       </Modal>
     </>
   );

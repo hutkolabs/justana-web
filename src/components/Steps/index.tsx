@@ -22,8 +22,8 @@ export const Steps = () => {
       <div className="steps-container">
         <ul className="steps">
           <li className="step" />
-          <li className="step" data-value="Step done 1" />
-          <li className="step" data-value="Step done 2" />
+          <li className="step" />
+          <li className="step" />
           <li className="step" />
           <li className="step" />
         </ul>

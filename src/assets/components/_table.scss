@@ -1,4 +1,6 @@
 .table {
+  height: fit-content;
+  overflow-y: auto;
 }
 
 %table-font {
@@ -34,5 +36,17 @@
   span {
     @extend %table-font;
     display: block;
+  }
+}
+
+.table-btn {
+  width: 30%;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  .btn {
+    width: 100%;
   }
 }

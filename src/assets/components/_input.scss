@@ -31,6 +31,7 @@
 
   &:focus {
     border-color: #fff;
+    background-color: transparent;
   }
 }
 
@@ -38,6 +39,7 @@
   width: 50%;
   margin: 0 auto;
   overflow: hidden;
+  margin-top: 30px;
 
   .btn {
     width: 100%;

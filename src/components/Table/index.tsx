@@ -49,6 +49,11 @@ export const Table = () => {
           <span>Social</span>
         </label>
       </li>
+      <li>
+        <div className="table-btn">
+          <button className="btn">Choose</button>
+        </div>
+      </li>
     </ul>
   );
 };
