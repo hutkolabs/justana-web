@@ -1,6 +1,8 @@
+import { SendTransaction } from "../tests/send-transaction";
+
 export const Steps = () => {
   return (
-    <div>
+    <div className="steps-wrapper">
       <div className="card">
         <span className="card-title">Daily task!</span>
         <span className="card-task">Feed your cat</span>
@@ -9,11 +11,11 @@ export const Steps = () => {
             <button className="btn">Decline</button>
           </li>
           <li className="card-btn">
-            <button className="btn-secondary">Accept</button>
+            <SendTransaction />
           </li>
         </ul>
       </div>
-      <div className="steps-container">
+      {/* <div className="steps-container">
         <ul className="steps">
           <li className="step" />
           <li className="step" />
@@ -22,7 +24,7 @@ export const Steps = () => {
           <li className="step" />
         </ul>
         <div className="steps-ball" />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { ConnectWallet } from "../tests/connect-wallet";
+
 export const Header = () => {
   return (
     <header className="header">
@@ -6,7 +8,7 @@ export const Header = () => {
       </a>
       <ul className="header-list">
         <li className="header-item">
-          <button className="btn">Connect wallet</button>
+          <ConnectWallet />
         </li>
         <li className="header-item">User</li>
       </ul>
