@@ -23,10 +23,14 @@
 }
 
 .card-footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+
+  button {
+    width: 100%;
+  }
 }
 
 .card-title {

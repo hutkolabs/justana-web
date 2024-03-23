@@ -97,7 +97,7 @@
     transform: rotate(45deg);
     position: absolute;
     top: -11px;
-    right: -11px;
+    left: -11px;
     z-index: 1;
     overflow: hidden;
   }
@@ -111,7 +111,7 @@
     transform: rotate(45deg);
     position: absolute;
     bottom: -11px;
-    left: -11px;
+    right: -11px;
     z-index: 1;
     overflow: hidden;
   }

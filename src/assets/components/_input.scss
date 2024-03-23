@@ -1,0 +1,45 @@
+.input-label {
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 4.5px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #525151;
+  background-color: transparent;
+  height: 35px;
+  min-height: 35px;
+  font-family: "Poppins", sans-serif;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  color: #fff;
+
+  &:focus {
+    border-color: #fff;
+  }
+}
+
+.input-btn {
+  width: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .btn {
+    width: 100%;
+  }
+}

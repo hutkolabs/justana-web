@@ -1,12 +1,8 @@
-import { forwardRef, useImperativeHandle, useState, ReactNode } from 'react';
-
-import { Portal } from '@components/Portal/index';
+import { forwardRef, useImperativeHandle, useState, ReactNode } from "react";
+import { Portal } from "../Portal";
 
 interface ModalProps {
-  title: string;
-  subtitle?: string;
   children: ReactNode;
-  className?: string;
 }
 
 export interface ModalRef {
@@ -15,27 +11,25 @@ export interface ModalRef {
 }
 
 export const Modal = forwardRef<ModalRef, ModalProps>(function ModalComponent(
-  { title, subtitle, children, className },
+  { children },
   ref
 ) {
   const [isShow, setShow] = useState(false);
 
   useImperativeHandle(ref, () => ({
     open: () => setShow(true),
-    close: () => setShow(false)
+    close: () => setShow(false),
   }));
 
   return isShow ? (
     <Portal>
-      <div className={`modal ${className ? className : ''}`}>
-        <div className="modal-header">
-          <h4 className="modal-heading">{title}</h4>
-          {subtitle && <span className="modal-subtitle">{subtitle}</span>}
-          <button type="button" className="modal-btn" onClick={() => setShow(false)}>
-            x
-          </button>
-        </div>
-        {children}
+      <div className="modal">
+        <button
+          type="button"
+          className="modal-btn"
+          onClick={() => setShow(false)}
+        />
+        <div className="modal-body">{children}</div>
       </div>
       <span className="overlay" />
     </Portal>

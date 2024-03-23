@@ -4,7 +4,7 @@ export const Header = () => {
   return (
     <header className="header">
       <a href="#" className="header-logo">
-        Indigo
+        Justana
       </a>
       <ul className="header-list">
         <li className="header-item">
