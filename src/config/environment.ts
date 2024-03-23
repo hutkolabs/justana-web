@@ -1,0 +1,1 @@
+export const CIRCLE_TOKEN = import.meta.env.VITE_CIRCLE_TOKEN;
