@@ -20,7 +20,6 @@ export class CircleApi {
 
   #userToken: string | null = localStorage.getItem('userToken');
   #encryptionKey: string | null = localStorage.getItem('encryptionKey');
-  #challengeId: string | null = localStorage.getItem('challengeId');
 
   //#region Setters
   set appId(appId: string) {
@@ -36,11 +35,6 @@ export class CircleApi {
   set encryptionKey(encryptionKey: string) {
     localStorage.setItem('encryptionKey', encryptionKey);
     this.#encryptionKey = encryptionKey
-  }
-
-  set challengeId(challengeId: string) {
-    localStorage.setItem('challengeId', challengeId);
-    this.#challengeId = challengeId
   }
   //#endregion Setters
 
