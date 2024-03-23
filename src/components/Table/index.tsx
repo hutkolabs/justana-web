@@ -6,49 +6,37 @@ export const Table = () => {
       <li className="table-item">
         <label>
           <input type="radio" name="tableGroup" />
-          <span>Explorer</span>
+          <span>BTC</span>
         </label>
       </li>
       <li className="table-item">
         <label>
           <input type="radio" name="tableGroup" />
-          <span>All rankings</span>
+          <span>ETH</span>
         </label>
       </li>
       <li className="table-item">
         <label>
           <input type="radio" name="tableGroup" />
-          <span>Hot contracts</span>
+          <span>USDT</span>
         </label>
       </li>
       <li className="table-item">
         <label>
           <input type="radio" name="tableGroup" />
-          <span>Chains</span>
+          <span>BNB</span>
         </label>
       </li>
       <li className="table-item">
         <label>
           <input type="radio" name="tableGroup" />
-          <span>Games</span>
+          <span>OP</span>
         </label>
       </li>
       <li className="table-item">
         <label>
           <input type="radio" name="tableGroup" />
-          <span>NFTs</span>
-        </label>
-      </li>
-      <li className="table-item">
-        <label>
-          <input type="radio" name="tableGroup" />
-          <span>DeFi</span>
-        </label>
-      </li>
-      <li className="table-item">
-        <label>
-          <input type="radio" name="tableGroup" />
-          <span>Social</span>
+          <span>MATIC</span>
         </label>
       </li>
       <li>
