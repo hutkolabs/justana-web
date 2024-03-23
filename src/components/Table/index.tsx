@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Table = () => {
   return (
     <ul className="table">
@@ -51,7 +53,9 @@ export const Table = () => {
       </li>
       <li>
         <div className="table-btn">
-          <button className="btn">Choose</button>
+          <Link to="/steps" className="btn">
+            Choose
+          </Link>
         </div>
       </li>
     </ul>

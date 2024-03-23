@@ -1,0 +1,48 @@
+.bal {
+  height: fit-content;
+  overflow-y: auto;
+}
+
+%table-font {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.09px;
+  color: #fff;
+}
+
+.bal-item {
+  @extend %table-font;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 22px 0;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  &:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.bal-wrapper {
+  border: 1px solid #525151;
+  padding: 37px 34px;
+  width: 80%;
+  margin-left: auto;
+}
+
+.bal-header {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 1px;
+  color: #fff;
+}

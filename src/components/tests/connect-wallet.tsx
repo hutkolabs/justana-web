@@ -28,9 +28,19 @@ export const ConnectWallet = () => {
 
   return (
     <>
-      <button className="btn" onClick={() => modalRef.current?.open()}>
-        {userAddress ? shortizeAddress(userAddress) : "Connect Wallet"}
-      </button>
+      {userAddress ? (
+        <button
+          className="btn btn-copy"
+          onClick={() => navigator.clipboard.writeText(userAddress)}
+        >
+          <i className="btn-copy-icon" />
+          {shortizeAddress(userAddress)}
+        </button>
+      ) : (
+        <button className="btn" onClick={() => modalRef.current?.open()}>
+          Connect wallet
+        </button>
+      )}
       <Modal ref={modalRef}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="nickname" className="input-label">
