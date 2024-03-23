@@ -4,9 +4,7 @@ import { ConnectWallet } from "../tests/connect-wallet";
 export const Header = () => {
   return (
     <header className="header">
-      <Link to="/" className="header-logo">
-        Justana
-      </Link>
+      <Link to="/" className="header-logo" />
       <ul className="header-list">
         <li className="header-item">
           <ConnectWallet />
