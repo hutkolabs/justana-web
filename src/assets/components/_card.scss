@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   min-width: 22vw;
-  width: 22vw;
+  width: fit-content;
   height: 22vw;
   padding: 24px;
   padding-top: 12px;
@@ -54,7 +54,7 @@
   align-items: center;
   justify-content: center;
   font-family: "Poppins", sans-serif;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;

@@ -31,6 +31,7 @@
   border-collapse: collapse;
   display: inline-block;
   margin: 0;
+  position: relative;
 
   &:first-child {
     transform: translateY(100px);
@@ -50,6 +51,18 @@
 
   &:nth-child(5) {
     transform: translateY(500px);
+  }
+
+  &::after {
+    content: attr(data-value);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.11px;
+    color: #fff;
   }
 }
 
