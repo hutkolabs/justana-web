@@ -1,5 +1,6 @@
+# GIF
 
-![Uploading hack.gif…]()
+![](hack.gif)
 
 # React + TypeScript + Vite
 
