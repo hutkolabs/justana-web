@@ -13,10 +13,13 @@
     "@circle-fin/w3s-pw-web-sdk": "^1.0.9",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "sass": "^1.72.0",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
