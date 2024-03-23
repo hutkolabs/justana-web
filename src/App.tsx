@@ -9,9 +9,9 @@ import "./assets/main.scss";
 export const App = () => {
   return (
     <BrowserRouter>
+      <Header />
       <div className="main">
         <div className="main-content">
-          <Header />
           <h1 className="main-title">
             What ideas interest you?
             <span className="main-line" />
