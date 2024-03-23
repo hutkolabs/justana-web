@@ -16,6 +16,8 @@ export class CircleApi {
 
   userAddress: string | null = null
 
+  userId: string | null = null;
+
   #appId: string | null = localStorage.getItem('appId');
 
   #userToken: string | null = localStorage.getItem('userToken');
@@ -46,7 +48,9 @@ export class CircleApi {
     this.authHeaders.set('Authorization', `Bearer ${this.apiKey}`)
   }
 
-  async connectWallet() {
+  async connectWallet({ userId }: { userId: string } ) {
+    this.userId = userId
+
     await this.initAppId()
     await this.createUser()
     await this.initUserSession()
@@ -374,26 +378,10 @@ export class CircleApi {
   }
 
   private getUserId() {
-    const userIdKey = 'userId'
-    const userId = localStorage.getItem(userIdKey)
-    if (userId) {
-      return userId
-    }
-
-    const newUserId = uuidv4()
-    localStorage.setItem(userIdKey, newUserId)
-    return newUserId
+    return this.userId!
   }
 
   private getIdempotencyKey() {
-    // const idempotencyKey = 'idempotencyKey'
-    // const key = localStorage.getItem(idempotencyKey)
-    // if (key) {
-    //   return key
-    // }
-
-    const newKey = uuidv4()
-    // localStorage.setItem(idempotencyKey, newKey)
-    return newKey
+    return uuidv4()
   }
 }
