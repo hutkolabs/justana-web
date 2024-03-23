@@ -1,0 +1,129 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 12px 25px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::after {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-color: #141518;
+    border: 1px solid #fff;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -11px;
+    left: -11px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  &::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-color: #141518;
+    border: 1px solid #fff;
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: -11px;
+    right: -11px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  &:hover {
+    background-color: $main-color;
+    color: #141518;
+    border-color: $main-color;
+
+    &::after,
+    &::before {
+      border-color: $main-color;
+    }
+  }
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: center;
+  text-transform: uppercase;
+  color: #141518;
+  padding: 12px 25px;
+  background-color: $main-color;
+  border: 1px solid $main-color;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::after {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-color: #141518;
+    border: 1px solid $main-color;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -11px;
+    right: -11px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  &::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background-color: #141518;
+    border: 1px solid $main-color;
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: -11px;
+    left: -11px;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+
+    &::after,
+    &::before {
+      border-color: #fff;
+    }
+  }
+}

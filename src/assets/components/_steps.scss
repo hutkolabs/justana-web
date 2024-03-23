@@ -1,0 +1,77 @@
+.steps-container {
+  height: 500px;
+  width: 500px;
+  margin: 10% auto;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.steps {
+  font-size: 0;
+  position: absolute;
+  bottom: 0;
+  white-space: nowrap;
+  animation: steps 1s linear infinite;
+  z-index: 0;
+}
+
+.step {
+  width: 125px;
+  height: 500px;
+  background-color: transparent;
+  border: 1px solid $main-color;
+  border-collapse: collapse;
+  display: inline-block;
+  margin: 0;
+
+  &:first-child {
+    transform: translateY(100px);
+  }
+
+  &:nth-child(2) {
+    transform: translateY(200px);
+  }
+
+  &:nth-child(3) {
+    transform: translateY(300px);
+  }
+
+  &:nth-child(4) {
+    transform: translateY(400px);
+  }
+
+  &:nth-child(5) {
+    transform: translateY(500px);
+  }
+}
+
+.steps-ball {
+  height: 90px;
+  width: 110px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  transform: translatex(265px) translatey(211px);
+  animation: bounce 1s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes steps {
+  100% {
+    transform: translatex(-125px) translatey(-100px);
+  }
+}
+
+@keyframes bounce {
+  50% {
+    transform: translatex(275px);
+    height: 105px;
+    width: 95px;
+    animation-timing-function: ease-in;
+  }
+  95% {
+    height: 100px;
+    width: 100px;
+  }
+}
