@@ -6,8 +6,35 @@ type TransferParams = {
   recipient: string
   amount: number
   symbol: string
-
 }
+export type TransferParamsCommon = {
+  amount: string
+  contractAddress: string
+  feeLevel?: string
+  gasLimit?: string
+  gasPrice?: string
+  maxFee?: string
+  priorityFee?: string
+  refId?: string
+  walletId: string
+}
+
+export type TransferParamsABI = {
+  abiFunctionSignature: string
+  abiParameters: string[]
+} & TransferParamsCommon
+
+export type ExecuteParamsCallData = {
+
+  callData: string
+
+} & TransferParamsCommon
+
+const isCallData = (params: ExecuteParams): params is ExecuteParamsCallData => {
+  return 'callData' in params
+}
+
+export type ExecuteParams = (TransferParamsABI | ExecuteParamsCallData)
 
 export class CircleApi {
   authHeaders: Headers = new Headers()
@@ -48,7 +75,7 @@ export class CircleApi {
     this.authHeaders.set('Authorization', `Bearer ${this.apiKey}`)
   }
 
-  async connectWallet({ userId }: { userId: string } ) {
+  async connectWallet({ userId }: { userId: string }) {
     this.userId = userId
 
     await this.initAppId()
@@ -181,11 +208,11 @@ export class CircleApi {
     };
 
     const { data } = await this.request<User>(url, options);
-    
+
     return data
   }
 
-  setupUserSession() {
+  private setupUserSession() {
     this.sdk.setAuthentication({ userToken: this.#userToken!, encryptionKey: this.#encryptionKey! });
   }
   //#endregion UserSession
@@ -226,6 +253,7 @@ export class CircleApi {
 
     const body = {
       idempotencyKey: this.getIdempotencyKey(),
+      accountType: "SCA",
       blockchains: [Blockchains.MATIC_MUMBAI],
     }
 
@@ -321,6 +349,83 @@ export class CircleApi {
     return data
   }
 
+  async estimateExecution(params: ExecuteParams) {
+    // const pathUrl = `/v1/w3s/transactions/contractExecution/estimateFee`
+    // const url = new URL(pathUrl, this.baseUrl)
+    const url = new URL(
+      "https://api.circle.com/v1/w3s/transactions/contractExecution/estimateFee"
+    )
+    const headers = new Headers(this.authHeaders)
+
+    const { amount, contractAddress, walletId } = params
+
+    const baseBody = {
+      idempotencyKey: this.getIdempotencyKey(),
+      amount,
+      contractAddress,
+      feeLevel: 'MEDIUM',
+      walletId
+    }
+
+    const functionBody = isCallData(params) ? {
+      callData: params.callData
+    } : {
+      abiFunctionSignature: params.abiFunctionSignature,
+      abiParameters: params.abiParameters
+    }
+
+    const options = {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        ...baseBody,
+        ...functionBody,
+      })
+    }
+
+    const response = await this.request<ChallengeId>(url, options)
+    console.log({ response });
+    return response;
+  }
+
+  async executeTransaction(params: ExecuteParams) {
+    const pathUrl = `/v1/w3s/user/transactions/contractExecution`
+    const url = new URL(pathUrl, this.baseUrl)
+    const headers = new Headers(this.authHeaders)
+    headers.set('X-User-Token', this.#userToken!)
+
+    const { amount, contractAddress, walletId } = params
+
+    const baseBody = {
+      idempotencyKey: this.getIdempotencyKey(),
+      amount,
+      contractAddress,
+      feeLevel: 'MEDIUM',
+      walletId
+    }
+
+    const functionBody = isCallData(params) ? {
+      callData: params.callData
+    } : {
+      abiFunctionSignature: params.abiFunctionSignature,
+      abiParameters: params.abiParameters
+    }
+
+    const options = {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        ...baseBody,
+        ...functionBody
+      })
+    }
+
+    const response = await this.request<ChallengeId>(url, options)
+    console.log({ response });
+    return response;
+  }
+
+
   //#region Transactions
   async getTransactions() {
     const pathUrl = '/v1/w3s/transactions'
@@ -363,7 +468,7 @@ export class CircleApi {
       const interval = setInterval(async () => {
         const transaction = await this.getLastTransaction();
         const { txHash } = transaction;
-        if (txHash !== previousHash) {
+        if (txHash && txHash !== previousHash) {
           clearInterval(interval);
           resolve(transaction);
         }

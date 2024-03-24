@@ -5,12 +5,14 @@ import { Table } from "./components/Table";
 import { Balance } from "./components/tests/balance";
 
 import "./assets/main.scss";
+import { SendTransaction } from "./components/tests/send-transaction";
 
 export const App = () => {
   return (
     <BrowserRouter>
       <div className="main">
         <div className="main-content">
+          <SendTransaction />
           <Header />
           <h1 className="main-title">
             What ideas interest you?
