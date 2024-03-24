@@ -93,14 +93,14 @@ export class CircleApi {
 
 
     const balances = await this.getBalances();
-    const token = balances.find(({ token }) => token.symbol === symbol)
-    if (!token) {
-      throw new Error('Token not found')
-    }
-    if (parseFloat(token.amount) < amount) {
-      throw new Error('Insufficient balance')
-    }
-    const tokenId = token.token.id
+    // const token = balances.find(({ token }) => token.symbol === symbol)
+    // if (!token) {
+    //   throw new Error('Token not found')
+    // }
+    // if (parseFloat(token.amount) < amount) {
+    //   throw new Error('Insufficient balance')
+    // }
+    // const tokenId = token.token.id
 
     return await this.waitNewTransaction(async () => {
       const challenge = await this.initiateTransaction({
@@ -108,7 +108,7 @@ export class CircleApi {
         walletId,
         destinationAddress: recipient,
         amount,
-        tokenId,
+        tokenId: "7adb2b7d-c9cd-5164-b2d4-b73b088274dc",
       })
       if (challenge) {
         await this.runChallenge(challenge)
